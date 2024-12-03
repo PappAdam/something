@@ -22,6 +22,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build the Docker image
       run: |
-        docker build . --file Dockerfile --tag ghcr.io/pappadam/something:$IMAGE_TAG
+        docker build . --file Dockerfile --tag ghcr.io/pappadam/something:$IMAGE_TAG --tag ghcr.io/pappadam/something:latest
         docker login ghcr.io -u pappadam -p ${{secrets.GHCR_TOKEN}}
         docker push ghcr.io/pappadam/something:$IMAGE_TAG
+        docker push ghcr.io/pappadam/something:latest
